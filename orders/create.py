@@ -3,7 +3,10 @@ import coreapi
 
 def test(name, owner, quantity, cost, status, bid_type):
     # Initialize a client & load the schema document
-    client = coreapi.Client()
+    username = 'john1'
+    password = 'password12345678'
+    auth = coreapi.auth.BasicAuthentication(username=username, password=password)
+    client = coreapi.Client(auth=auth)
     schema = client.get("http://testsite.light-it.io/docs/")
 
     # Interact with the API endpoint
