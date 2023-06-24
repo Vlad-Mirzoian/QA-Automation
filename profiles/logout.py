@@ -16,9 +16,9 @@ def test():
 
         # JSON response output
         result = dict(result)
-        print(f"Login is successful. JSON response:\n{result}")
+        print(f"Logout is successful. JSON response:\n{result}")
     except coreapi.exceptions.ErrorMessage as e:
-        print(f"Login failed. Error message: {str(e)}")
+        print(f"Logout failed. Error message: {str(e)}")
 
 
 if __name__ == "__main__":

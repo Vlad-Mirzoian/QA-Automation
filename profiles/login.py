@@ -27,6 +27,7 @@ def test(username, email, password):
 
 
 if __name__ == "__main__":
+    # Define different sets of test data
     test_data = [
         {"username": "john1", "email": "mail2@example.com", "password": "password12345678"},
         {"username": "john", "email": "mail2@example.com", "password": "password12345678"},
@@ -40,6 +41,6 @@ if __name__ == "__main__":
     print("\n <========================== Login Testing ===========================>\n\n")
     for data in test_data:
         print("Testing with data:", data)
-        test(str(data["username"]), str(data["email"]), str(data["password"]))
+        test(data["username"], data["email"], data["password"])
         print()
     input()
