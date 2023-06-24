@@ -17,7 +17,7 @@ def test():
         # JSON response output
         result = dict(result)
         print(f"Logout is successful. JSON response:\n{result}")
-    except coreapi.exceptions.ErrorMessage as e:
+    except Exception as e:
         print(f"Logout failed. Error message: {str(e)}")
 
 

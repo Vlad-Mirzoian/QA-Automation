@@ -23,7 +23,7 @@ def test(username, email, password):
         result = dict(result)
         result['user'] = dict(result['user'])
         print(f"Profile creation successful. JSON response:\n{result}")
-    except coreapi.exceptions.ErrorMessage as e:
+    except Exception as e:
         print(f"Profile creation failed. Error message: {str(e)}")
 
 

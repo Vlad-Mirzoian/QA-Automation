@@ -22,7 +22,7 @@ def test(username, email, password):
         result = dict(result)
         result['user'] = dict(result['user'])
         print(f"Login is successful. JSON response:\n{result}")
-    except coreapi.exceptions.ErrorMessage as e:
+    except Exception as e:
         print(f"Login failed. Error message: {str(e)}")
 
 

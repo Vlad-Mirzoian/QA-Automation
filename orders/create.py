@@ -24,7 +24,7 @@ def test(name, owner, quantity, cost, status, bid_type):
         # JSON response output
         result = dict(result)
         print(f"Order creation successful. JSON response:\n{result}")
-    except coreapi.exceptions.ErrorMessage as e:
+    except Exception as e:
         print(f"Order creation failed. Error message: {str(e)}")
 
 
