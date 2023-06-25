@@ -1,7 +1,7 @@
 import coreapi
 
 
-def test(order_id, name, owner, quantity, cost, status, bid_type):
+def send(name, owner, quantity, cost, status, bid_type):
     # Initialize a client & load the schema document
     username = 'john1'
     password = 'password12345678'
@@ -10,9 +10,8 @@ def test(order_id, name, owner, quantity, cost, status, bid_type):
     schema = client.get("http://testsite.light-it.io/docs/")
 
     # Interact with the API endpoint
-    action = ["orders", "orders", "update"]
+    action = ["orders", "orders", "create"]
     params = {
-        "id": order_id,
         "name": name,
         "owner": owner,
         "quantity": quantity,
@@ -32,11 +31,10 @@ def test(order_id, name, owner, quantity, cost, status, bid_type):
         print(f"Order creation failed. Error message: {str(e)}")
 
 
-if __name__ == "__main__":
+def test():
     # Define different sets of test data
     test_data = [
         {
-            "id": 1,
             "name": "TestProduct1",
             "owner": 1,
             "quantity": 10,
@@ -45,8 +43,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": "1",
-            "name": "TestProduct2",
+            "name": "Test Product 2",
             "owner": 1,
             "quantity": 10,
             "cost": 100,
@@ -54,8 +51,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": "one",
-            "name": "TestProduct3",
+            "name": "Test-Product-3",
             "owner": 1,
             "quantity": 10,
             "cost": 100,
@@ -63,8 +59,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": "",
-            "name": "TestProduct4",
+            "name": "Test_Product_4",
             "owner": 1,
             "quantity": 10,
             "cost": 100,
@@ -72,8 +67,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "Test Product 5",
+            "name": "Test!Product!5",
             "owner": 1,
             "quantity": 10,
             "cost": 100,
@@ -81,8 +75,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "Test-Product-6",
+            "name": "6",
             "owner": 1,
             "quantity": 10,
             "cost": 100,
@@ -90,8 +83,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "Test_Product_7",
+            "name": 7,
             "owner": 1,
             "quantity": 10,
             "cost": 100,
@@ -99,34 +91,6 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "Test!Product!8",
-            "owner": 1,
-            "quantity": 10,
-            "cost": 100,
-            "status": 1,
-            "bid_type": 1,
-        },
-        {
-            "id": 1,
-            "name": "9",
-            "owner": 1,
-            "quantity": 10,
-            "cost": 100,
-            "status": 1,
-            "bid_type": 1,
-        },
-        {
-            "id": 1,
-            "name": 10,
-            "owner": 1,
-            "quantity": 10,
-            "cost": 100,
-            "status": 1,
-            "bid_type": 1,
-        },
-        {
-            "id": 1,
             "name": "",
             "owner": 1,
             "quantity": 10,
@@ -135,8 +99,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct12",
+            "name": "TestProduct9",
             "owner": "1",
             "quantity": 10,
             "cost": 100,
@@ -144,8 +107,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct13",
+            "name": "TestProduct10",
             "owner": "one",
             "quantity": 10,
             "cost": 100,
@@ -153,8 +115,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct14",
+            "name": "TestProduct11",
             "owner": "",
             "quantity": 10,
             "cost": 100,
@@ -162,8 +123,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct15",
+            "name": "TestProduct12",
             "owner": 1,
             "quantity": "10",
             "cost": 100,
@@ -171,8 +131,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct16",
+            "name": "TestProduct13",
             "owner": 1,
             "quantity": "ten",
             "cost": 100,
@@ -180,8 +139,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct17",
+            "name": "TestProduct14",
             "owner": 1,
             "quantity": "",
             "cost": 100,
@@ -189,8 +147,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct18",
+            "name": "TestProduct15",
             "owner": 1,
             "quantity": 10,
             "cost": "100",
@@ -198,8 +155,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct19",
+            "name": "TestProduct16",
             "owner": 1,
             "quantity": "10",
             "cost": "hundred",
@@ -207,8 +163,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct20",
+            "name": "TestProduct17",
             "owner": 1,
             "quantity": "10",
             "cost": "",
@@ -216,8 +171,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct21",
+            "name": "TestProduct18",
             "owner": 1,
             "quantity": "10",
             "cost": 100,
@@ -225,8 +179,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct22",
+            "name": "TestProduct19",
             "owner": 1,
             "quantity": "10",
             "cost": 100,
@@ -234,8 +187,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct23",
+            "name": "TestProduct20",
             "owner": 1,
             "quantity": "10",
             "cost": 100,
@@ -243,8 +195,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct24",
+            "name": "TestProduct21",
             "owner": 1,
             "quantity": "10",
             "cost": 100,
@@ -252,8 +203,7 @@ if __name__ == "__main__":
             "bid_type": 1,
         },
         {
-            "id": 1,
-            "name": "TestProduct25",
+            "name": "TestProduct22",
             "owner": 1,
             "quantity": "10",
             "cost": 100,
@@ -261,8 +211,7 @@ if __name__ == "__main__":
             "bid_type": 3,
         },
         {
-            "id": 1,
-            "name": "TestProduct26",
+            "name": "TestProduct23",
             "owner": 1,
             "quantity": "10",
             "cost": 100,
@@ -270,8 +219,7 @@ if __name__ == "__main__":
             "bid_type": "1",
         },
         {
-            "id": 1,
-            "name": "TestProduct27",
+            "name": "TestProduct24",
             "owner": 1,
             "quantity": "10",
             "cost": 100,
@@ -279,8 +227,7 @@ if __name__ == "__main__":
             "bid_type": "one",
         },
         {
-            "id": 1,
-            "name": "TestProduct28",
+            "name": "TestProduct25",
             "owner": 1,
             "quantity": "10",
             "cost": 100,
@@ -289,11 +236,10 @@ if __name__ == "__main__":
         }
     ]
 
-    print("\n <======================= Order Updating Testing ========================>\n\n")
+    print("\n <======================= Order Creation Testing ========================>\n")
     for data in test_data:
         print("Testing with data:", data)
-        test(
-            data["id"],
+        send(
             data["name"],
             data["owner"],
             data["quantity"],
@@ -303,3 +249,7 @@ if __name__ == "__main__":
         )
         print()
     input()
+
+
+if __name__ == "__main__":
+    test()

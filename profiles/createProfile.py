@@ -1,7 +1,7 @@
 import coreapi
 
 
-def test(username, email, password):
+def send(username, email, password):
     # Initialize a client & load the schema document
     client = coreapi.Client()
     schema = client.get("http://testsite.light-it.io/docs/")
@@ -27,7 +27,7 @@ def test(username, email, password):
         print(f"Profile creation failed. Error message: {str(e)}")
 
 
-if __name__ == "__main__":
+def test():
     # Define different sets of test data
     test_data = [
         {"username": "john", "email": "mail1@example.com", "password": "password12345678"},
@@ -55,9 +55,13 @@ if __name__ == "__main__":
         {"username": "sam13", "email": "mail23@example.com", "password": ""},
     ]
 
-    print("\n <======================= Profile Creation Testing ========================>\n\n")
+    print("\n <======================= Profile Creation Testing ========================>\n")
     for data in test_data:
         print("Testing with data:", data)
-        test(data["username"], data["email"], data["password"])
+        send(data["username"], data["email"], data["password"])
         print()
     input()
+
+
+if __name__ == "__main__":
+    test()

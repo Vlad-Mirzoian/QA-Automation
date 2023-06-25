@@ -1,7 +1,7 @@
 import coreapi
 
 
-def test():
+def send():
     # Initialize a client & load the schema document
     client = coreapi.Client()
     schema = client.get("http://testsite.light-it.io/docs/")
@@ -21,7 +21,11 @@ def test():
         print(f"Logout failed. Error message: {str(e)}")
 
 
-if __name__ == "__main__":
-    # Call the test function
-    test()
+def test():
+    print("\n <========================== Logout Testing ===========================>\n")
+    send()
     input()
+
+
+if __name__ == "__main__":
+    test()

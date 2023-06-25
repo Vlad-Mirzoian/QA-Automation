@@ -1,7 +1,7 @@
 import coreapi
 
 
-def test():
+def send():
     # Initialize a client & load the schema document
     username = 'john1'
     password = 'password12345678'
@@ -23,7 +23,11 @@ def test():
         print(f"Listing of closed orders failed. Error message: {str(e)}")
 
 
-if __name__ == "__main__":
-    # Call the test function
-    test()
+def test():
+    print("\n <======================= Order History Testing ========================>\n")
+    send()
     input()
+
+
+if __name__ == "__main__":
+    test()
