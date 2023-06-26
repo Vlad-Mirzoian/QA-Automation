@@ -1,11 +1,9 @@
 import coreapi
 
 
-def send():
+def send(usrname, passwrd):
     # Initialize a client & load the schema document
-    username = 'john1'
-    password = 'password12345678'
-    auth = coreapi.auth.BasicAuthentication(username=username, password=password)
+    auth = coreapi.auth.BasicAuthentication(username=usrname, password=passwrd)
     client = coreapi.Client(auth=auth)
     schema = client.get("http://testsite.light-it.io/docs/")
 
@@ -24,8 +22,11 @@ def send():
 
 
 def test():
+    username = input("Enter the username: ")
+    password = input("Enter the password: ")
+
     print("\n <======================= Order History Testing ========================>\n")
-    send()
+    send(username, password)
     input()
 
 

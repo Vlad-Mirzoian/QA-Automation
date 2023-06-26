@@ -1,11 +1,9 @@
 import coreapi
 
 
-def send(name, owner, quantity, cost, status, bid_type):
+def send(usrname, passwrd, name, owner, quantity, cost, status, bid_type):
     # Initialize a client & load the schema document
-    username = 'john1'
-    password = 'password12345678'
-    auth = coreapi.auth.BasicAuthentication(username=username, password=password)
+    auth = coreapi.auth.BasicAuthentication(username=usrname, password=passwrd)
     client = coreapi.Client(auth=auth)
     schema = client.get("http://testsite.light-it.io/docs/")
 
@@ -32,6 +30,9 @@ def send(name, owner, quantity, cost, status, bid_type):
 
 
 def test():
+    username = input("Enter the username: ")
+    password = input("Enter the password: ")
+
     # Define different sets of test data
     test_data = [
         {
@@ -240,6 +241,8 @@ def test():
     for data in test_data:
         print("Testing with data:", data)
         send(
+            username,
+            password,
             data["name"],
             data["owner"],
             data["quantity"],

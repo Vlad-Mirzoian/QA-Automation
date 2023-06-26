@@ -1,9 +1,10 @@
 import coreapi
 
 
-def send(order_id):
+def send(usrname, passwrd, order_id):
     # Initialize a client & load the schema document
-    client = coreapi.Client()
+    auth = coreapi.auth.BasicAuthentication(username=usrname, password=passwrd)
+    client = coreapi.Client(auth=auth)
     schema = client.get("http://testsite.light-it.io/docs/")
 
     # Interact with the API endpoint
@@ -24,11 +25,14 @@ def send(order_id):
 
 
 def test():
-    test_data = [{"id": 1}, {"id": "1"}, {"id": "one"}, {"id": ""}]
+    username = input("Enter the username: ")
+    password = input("Enter the password: ")
+
+    test_data = [{"id": 0}, {"id": "1"}, {"id": "one"}, {"id": ""}]
     print("\n <======================= Order Deletion Testing ========================>\n")
     for data in test_data:
         print("Testing with data:", data)
-        send(data["id"])
+        send(username, password, ["id"])
         print()
     input()
 
