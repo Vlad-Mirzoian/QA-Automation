@@ -1,4 +1,5 @@
 import coreapi
+import json
 
 
 def send():
@@ -15,7 +16,7 @@ def send():
         result = client.action(schema, action)
 
         # JSON response output
-        result = dict(result)
+        result_dict = json.loads(json.dumps(result))
         print(f"Logout is successful. JSON response:\n{result}")
     except Exception as e:
         print(f"Logout failed. Error message: {str(e)}")

@@ -1,12 +1,8 @@
 import coreapi
+import json
 
 
-def send(usrname, passwrd, name, owner, quantity, cost, status, bid_type):
-    # Initialize a client & load the schema document
-    auth = coreapi.auth.BasicAuthentication(username=usrname, password=passwrd)
-    client = coreapi.Client(auth=auth)
-    schema = client.get("http://testsite.light-it.io/docs/")
-
+def send(client, schema, name, owner, quantity, cost, status, bid_type):
     # Interact with the API endpoint
     action = ["orders", "orders", "create"]
     params = {
@@ -23,15 +19,24 @@ def send(usrname, passwrd, name, owner, quantity, cost, status, bid_type):
         result = client.action(schema, action, params=params)
 
         # JSON response output
-        result = dict(result)
-        print(f"Order creation successful. JSON response:\n{result}")
+        result_dict = json.loads(json.dumps(result))
+        print(f"Order creation successful. JSON response:\n{result_dict}")
     except Exception as e:
         print(f"Order creation failed. Error message: {str(e)}")
 
 
 def test():
-    username = input("Enter the username: ")
-    password = input("Enter the password: ")
+    # Initialize a client & load the schema document
+    while True:
+        try:
+            username = input("Enter the username: ")
+            password = input("Enter the password: ")
+            auth = coreapi.auth.BasicAuthentication(username=username, password=password)
+            client = coreapi.Client(auth=auth)
+            schema = client.get("http://testsite.light-it.io/docs/")
+            break
+        except Exception as e:
+            print(print(f"Authorization failed. Error message: {str(e)}"))
 
     # Define different sets of test data
     test_data = [
@@ -241,8 +246,8 @@ def test():
     for data in test_data:
         print("Testing with data:", data)
         send(
-            username,
-            password,
+            client,
+            schema,
             data["name"],
             data["owner"],
             data["quantity"],

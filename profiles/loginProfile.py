@@ -1,4 +1,5 @@
 import coreapi
+import json
 
 
 def send(username, email, password):
@@ -19,9 +20,8 @@ def send(username, email, password):
         result = client.action(schema, action, params=params)
 
         # JSON response output
-        result = dict(result)
-        result['user'] = dict(result['user'])
-        print(f"Login is successful. JSON response:\n{result}")
+        result_dict = json.loads(json.dumps(result))
+        print(f"Login is successful. JSON response:\n{result_dict}")
     except Exception as e:
         print(f"Login failed. Error message: {str(e)}")
 

@@ -1,12 +1,8 @@
 import coreapi
+import json
 
 
-def send(usrname, passwrd, order_id):
-    # Initialize a client & load the schema document
-    auth = coreapi.auth.BasicAuthentication(username=usrname, password=passwrd)
-    client = coreapi.Client(auth=auth)
-    schema = client.get("http://testsite.light-it.io/docs/")
-
+def send(client, schema, order_id):
     # Interact with the API endpoint
     action = ["orders", "orders", "delete"]
     params = {
@@ -18,21 +14,30 @@ def send(usrname, passwrd, order_id):
         result = client.action(schema, action, params=params)
 
         # JSON response output
-        result = dict(result)
-        print(f"Order deletion successful. JSON response:\n{result}")
+        result_dict = json.loads(json.dumps(result))
+        print(f"Order deletion successful. JSON response:\n{result_dict}")
     except Exception as e:
         print(f"Order deletion failed. Error message: {str(e)}")
 
 
 def test():
-    username = input("Enter the username: ")
-    password = input("Enter the password: ")
+    # Initialize a client & load the schema document
+    while True:
+        try:
+            username = input("Enter the username: ")
+            password = input("Enter the password: ")
+            auth = coreapi.auth.BasicAuthentication(username=username, password=password)
+            client = coreapi.Client(auth=auth)
+            schema = client.get("http://testsite.light-it.io/docs/")
+            break
+        except Exception as e:
+            print(print(f"Authorization failed. Error message: {str(e)}"))
 
     test_data = [{"id": 0}, {"id": "1"}, {"id": "one"}, {"id": ""}]
     print("\n <======================= Order Deletion Testing ========================>\n")
     for data in test_data:
         print("Testing with data:", data)
-        send(username, password, ["id"])
+        send(client, schema, ["id"])
         print()
     input()
 
